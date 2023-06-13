@@ -9,13 +9,14 @@ import numpy as np
 import json
 import re
 import flask
+from config import TOKEN 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 server = flask.Flask(__name__)
 app = dash.Dash(__name__, server=server,external_stylesheets=external_stylesheets)
 
 #https://plotly.github.io/plotly.py-docs/generated/plotly.express.scatter_mapbox.html
-px.set_mapbox_access_token("pk.eyJ1Ijoic2VqYWwyMzQiLCJhIjoiY2xla2hiODI3MGFrYTN5cm40dWg5d2dyaiJ9.mwYlGueLwABEg82Ujm0PBQ")
+px.set_mapbox_access_token(TOKEN)
 df = pd.read_csv('full_tweet_list.csv')
 
 color_map = {
