@@ -15,7 +15,8 @@ dash.register_page(__name__)
 
 from timeseries_instructions import *
 
-df = pd.read_csv('full_tweet_list.csv')
+#df = pd.read_csv('full_tweet_list.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/sejal234/goyaresearch_dashwebpages/main/full_tweet_list.csv')
 df[['date', 'time']] = df['created_at'].str.split(" ", expand=True)
 date = df.copy()
 columns_to_convert = ['aoc', 'ivanka', 'donald', 'unanue', 'cruz', 'castro', 'cuomo', '#BuycottGoya','#BuyGoya', '#BoycottGoya', '#Goyaway']

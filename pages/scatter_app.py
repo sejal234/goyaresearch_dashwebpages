@@ -12,7 +12,8 @@ from scatter_instructions import *
 dash.register_page(__name__)
 
 #https://plotly.com/python/line-and-scatter/ 
-df = pd.read_csv('full_tweet_list.csv')
+#df = pd.read_csv('full_tweet_list.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/sejal234/goyaresearch_dashwebpages/main/full_tweet_list.csv')
 df[['date', 'time']] = df['created_at'].str.split(" ",expand=True)
 df['date'] = pd.to_datetime(df['date'])
 df['month'] = df['date'].dt.strftime('%B %Y')

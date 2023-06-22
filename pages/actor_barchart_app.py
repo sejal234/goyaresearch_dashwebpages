@@ -13,7 +13,8 @@ from actor_hashtag_instructions import *
 dash.register_page(__name__)
 
 # see https://plotly.com/python/px-arguments/ for more options
-df = pd.read_csv('full_tweet_list.csv')
+#df = pd.read_csv('full_tweet_list.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/sejal234/goyaresearch_dashwebpages/main/full_tweet_list.csv')
 # # if your variable columns is represented as counts, convert count values to binary (0 or 1)
 columns_to_convert = ['aoc', 'ivanka', 'donald', 'unanue', 'cruz', 'castro', 'cuomo']
 df[columns_to_convert] = np.where(df[columns_to_convert] > 0, 1, 0)

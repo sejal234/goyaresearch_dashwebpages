@@ -14,7 +14,8 @@ dash.register_page(__name__)
 
 #https://plotly.github.io/plotly.py-docs/generated/plotly.express.scatter_mapbox.html
 px.set_mapbox_access_token(TOKEN)
-df = pd.read_csv('full_tweet_list.csv')
+#df = pd.read_csv('full_tweet_list.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/sejal234/goyaresearch_dashwebpages/main/full_tweet_list.csv')
 
 color_map = {
     "negative": "#F28268",
