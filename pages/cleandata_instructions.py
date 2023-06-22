@@ -88,3 +88,16 @@ for row in range(len(all_tweets)):
 c_longitude = ''' #insert code here '''
 
 c_sentiment = ''' #insert code here '''
+
+
+'''
+#city_df = pd.DataFrame()
+#city_df['city'] = all_tweets['Location'].unique()
+#city_df["loc"] = city_df["city"].apply(geolocator.geocode)
+
+
+#Get .point containing latitude and longitude from the geocode’s response, if it’s not None.
+#city_df["point"]= city_df["loc"].apply(lambda loc: tuple(loc.point) if loc else None)
+#Split the .point into separate columns 'lat' 'lon' and 'altitude'
+#city_df[['lat', 'lon', 'altitude']] = pd.DataFrame(city_df['point'].to_list(), index=schools.index)
+'''
