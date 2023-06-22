@@ -37,6 +37,11 @@ fig.update_layout(xaxis_title='Actor', yaxis_title='Percent of Tweets')
 
 layout = html.Div(children=[
     html.H1(children='Sentiment by Actor', style={'textAlign':'center'}),
+    html.P(children='''
+    A bar chart broken down by political actor and sentiment helps you understand how the connotation of the conversation changes as different political actors are being mentioned. 
+    For instance, highly positive language or negative language around a specific actor helps show the commentator's emotions towards said actor.
+        '''),
+
     html.Br(),
     html.Div(children='''update'''),
     dcc.Graph(id='graph-content', figure = fig),
@@ -58,49 +63,49 @@ layout = html.Div(children=[
         html.Br(),
 
         html.P(children='''
-        For this tutorial to work, 
+            Then, declare your "app" variable NOTE TO SELF: PROBABLY EXPLAIN HOW THE WEBPAGE WORKS IN THE HOME PAGE? 
             '''),
-                
-        dcc.Markdown(f'```python\n{c_import}\n```'),
+
+        dcc.Markdown(f'```python\n{c_app}\n```'),
 
         html.Br(),
 
+        html.P('''
+        Your actor columns must be represented as a binary variable (a 1 if the actor is mentioned in the test, a 0 if not). 
+        If you have not yet created actor columns (or found sentiment), reference the data cleaning page to learn more about what these columns are and get the steps to create them.
+        Create a dataframe that groups by the sentiment and, for each actor, find the percent of tweets that are positive, negative, and neutral.
+        We sort the values by negative %. 
+            ''', html.A('data cleaning page', href='/data-cleaning')),
+                
+        dcc.Markdown(f'```python\n{c_toy_actor}\n```'),
 
-        ]),
+        html.Br(),
 
+        html.P('''
+        Create a bar chart figure, where the actor is shown on the x-axis and two corresponding bars, 
+        the positive and negative percent (you can add "neu_percent" to the y), appear for each one.'''),
+                
+        dcc.Markdown(f'```python\n{c_actor_fig}\n```'),
 
+        html.Br(),
+
+        html.P('''
+        Create a bar chart figure, where the actor is shown on the x-axis and two corresponding bars, 
+        the positive and negative percent (you can add "neu_percent" to the y), appear for each one.'''),
+                
+        dcc.Markdown(f'```python\n{c_actor_fig}\n```'),
+
+        html.Br(),
+
+        html.P('''
+        Create the app layout. Launch the web server and start the application. When running this script in your terminal (in the virtual environment),
+        the terminal will return a link for you to view the page on your web browser. '''),
+                
+        dcc.Markdown(f'```python\n{c_final}\n```'),
+
+        html.Br(),
+        html.P('''
+        Note: this tutorial is very similar to the one on creating a sentiment bar chart by hashtag.
+            ''', html.A('on creating a sentiment bar chart by hashtag', href='/hashtag_barchart_app.py')),
+        ])
     ])
-
-# layout = html.Div(children=[
-#     html.H2(children='Sentiment by Variable'),
-#     html.Div(children='''Exploring the sentiment behind reactions to the Goya Boycott. Use the dropdown to select the variable to examine.'''),
-#     # dcc.Dropdown(
-#     #     id='input-dropdown',
-#     #     options=[
-#     #         {'label': 'Actor', 'value': 'actor'},
-#     #         {'label': 'Hashtag', 'value': 'hashtag'}
-#     #     ],
-#     #     value='actor'),
-#     #dcc.Graph(id='example-graph'),
-#     html.Div(children='''Want to reproduce this code? Refer to this script. (note to self: insert script)'''),
-# ])
-
-# @callback(
-#     Output('example-graph', 'figure'),
-#     Input('input-dropdown', 'value')
-# )
-# def update_graph(input_value):
-    #print('Input Value:', input_value)
-    # if input_value == 'actor':
-    #     fig = px.bar(toy_actor_df, x="index", y=["neg_percent", "pos_percent"], 
-    #                  color_discrete_map={"neg_percent": "#F28268", "pos_percent": "#38C477"}, 
-    #                  barmode='group', title="Sentiment by Actor")
-    #     fig.update_layout(xaxis_title='Actor', yaxis_title='Percent of Tweets')
-
-    # elif input_value == 'hashtag':
-    #     fig = px.bar(hasht, x="index", y=["neg_percent", "pos_percent"], 
-    #                  color_discrete_map={"neg_percent": "#F28268", "pos_percent": "#38C477"}, 
-    #                  barmode='group', title="Sentiment by Hashtag")
-    #     fig.update_layout(xaxis_title='Hashtag', yaxis_title='Percent of Tweets')
-
-    # return fig

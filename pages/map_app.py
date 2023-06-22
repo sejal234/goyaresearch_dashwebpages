@@ -105,8 +105,6 @@ layout = html.Div([
 
         html.Br(),
         ]),
-
-    #now, do the actual coding of the text
 ])
 
 @callback(Output('graph-content', 'figure'), 

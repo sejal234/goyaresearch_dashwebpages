@@ -7,6 +7,7 @@ from datetime import date
 import numpy as np
 
 dash.register_page(__name__)
+from actor_hashtag_instructions import *
 
 # see https://plotly.com/python/px-arguments/ for more options
 df = pd.read_csv('full_tweet_list.csv')
@@ -36,43 +37,75 @@ fig.update_layout(xaxis_title='Hashtag', yaxis_title='Percent of Tweets')
 
 layout = html.Div(children=[
     html.H2(children='Sentiment by Hashtag'),
+    html.P(children='''
+    A bar chart broken down by hashtag and sentiment helps you understand how the connotation of the conversation changes around different subtopics/positions. 
+    For instance, negative language around #GoyaBoycott shows that people supporting the boycott talk about the movement with negative emotion. 
+        '''),
+    html.Br(),
+
     html.Div(children='''update'''),
     dcc.Graph(id='graph-content', figure = fig),
-    html.Div(children='''Want to reproduce this code? Refer to this script. (note to self: insert script)'''),
-    ])
+    html.Br(),
 
+    html.Div([
+        html.H2(children='How can I recreate this code?'),
 
+        html.Br(),
 
-# layout = html.Div(children=[
-#     html.H2(children='Sentiment by Variable'),
-#     html.Div(children='''Exploring the sentiment behind reactions to the Goya Boycott. Use the dropdown to select the variable to examine.'''),
-#     # dcc.Dropdown(
-#     #     id='input-dropdown',
-#     #     options=[
-#     #         {'label': 'Actor', 'value': 'actor'},
-#     #         {'label': 'Hashtag', 'value': 'hashtag'}
-#     #     ],
-#     #     value='actor'),
-#     #dcc.Graph(id='example-graph'),
-#     html.Div(children='''Want to reproduce this code? Refer to this script. (note to self: insert script)'''),
-# ])
+        html.P(children='''
+            This tutorial shows you how to make a Dash Webpage, but to replicate the graph itself, use the plotly.express "bar" tool. 
+            You can also follow the cleaning/graphing parts of this tutorial and ignore the configuration of the dash webpage. 
+            To replicate the full webpage, use the following tutorial. Begin with import statements:
+            '''),
+                
+        dcc.Markdown(f'```python\n{c_import}\n```'),
 
-# @callback(
-#     Output('example-graph', 'figure'),
-#     Input('input-dropdown', 'value')
-# )
-# def update_graph(input_value):
-    #print('Input Value:', input_value)
-    # if input_value == 'actor':
-    #     fig = px.bar(toy_actor_df, x="index", y=["neg_percent", "pos_percent"], 
-    #                  color_discrete_map={"neg_percent": "#F28268", "pos_percent": "#38C477"}, 
-    #                  barmode='group', title="Sentiment by Actor")
-    #     fig.update_layout(xaxis_title='Actor', yaxis_title='Percent of Tweets')
+        html.Br(),
 
-    # elif input_value == 'hashtag':
-    #     fig = px.bar(hasht, x="index", y=["neg_percent", "pos_percent"], 
-    #                  color_discrete_map={"neg_percent": "#F28268", "pos_percent": "#38C477"}, 
-    #                  barmode='group', title="Sentiment by Hashtag")
-    #     fig.update_layout(xaxis_title='Hashtag', yaxis_title='Percent of Tweets')
+        html.P(children='''
+            Then, declare your "app" variable NOTE TO SELF: PROBABLY EXPLAIN HOW THE WEBPAGE WORKS IN THE HOME PAGE? 
+            '''),
 
-    # return fig
+        dcc.Markdown(f'```python\n{c_app}\n```'),
+
+        html.Br(),
+
+        html.P('''
+        Your hashtag columns must be represented as a binary variable (a 1 if the actor is mentioned in the test, a 0 if not). 
+        If you have not yet created hashtag columns (or found sentiment), reference the data cleaning page to learn more about what these columns are and get the steps to create them.
+        Create a dataframe that groups by the sentiment and, for each hashtag, find the percent of tweets that are positive, negative, and neutral.
+        We sort the values by negative %. 
+            ''', html.A('data cleaning page', href='/data-cleaning')),
+                
+        dcc.Markdown(f'```python\n{c_toy_hashtag}\n```'),
+
+        html.Br(),
+
+        html.P('''
+        Create a bar chart figure, where the hashtag is shown on the x-axis and two corresponding bars, 
+        the positive and negative percent (you can add "neu_percent" to the y), appear for each one.'''),
+                
+        dcc.Markdown(f'```python\n{c_hashtag_fig}\n```'),
+
+        html.Br(),
+
+        html.P('''
+        Create a bar chart figure, where the actor is shown on the x-axis and two corresponding bars, 
+        the positive and negative percent (you can add "neu_percent" to the y), appear for each one.'''),
+                
+        dcc.Markdown(f'```python\n{c_actor_fig}\n```'),
+
+        html.Br(),
+
+        html.P('''
+        Create the app layout. Launch the web server and start the application. When running this script in your terminal (in the virtual environment),
+        the terminal will return a link for you to view the page on your web browser. '''),
+                
+        dcc.Markdown(f'```python\n{c_final}\n```'),
+
+        html.Br(),
+        html.P('''
+        Note: this tutorial is very similar to the one on creating a sentiment bar chart by actor.
+            ''', html.A('on creating a sentiment bar chart by actor', href='/actor_barchart_app.py')),
+        ]) 
+])
