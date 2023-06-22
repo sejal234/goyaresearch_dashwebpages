@@ -1,7 +1,7 @@
 import dash
 from dash import Dash, html, dcc, Input, Output, callback
-import plotly.express as px
 import pandas as pd
+import plotly.express as px
 import plotly.graph_objects as go
 from datetime import date
 import numpy as np
@@ -10,7 +10,8 @@ dash.register_page(__name__)
 from actor_hashtag_instructions import *
 
 # see https://plotly.com/python/px-arguments/ for more options
-df = pd.read_csv('full_tweet_list.csv')
+#df = pd.read_csv('full_tweet_list.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/sejal234/goyaresearch_dashwebpages/main/full_tweet_list.csv')
 # # if your variable columns is represented as counts, convert count values to binary (0 or 1)
 #columns_to_convert = ['aoc', 'ivanka', 'donald', 'unanue', 'cruz', 'castro', 'cuomo', '#BuycottGoya','#BuyGoya', '#BoycottGoya', '#Goyaway']
 columns_to_convert = ['#BuycottGoya','#BuyGoya', '#BoycottGoya', '#Goyaway']
@@ -75,7 +76,7 @@ layout = html.Div(children=[
         If you have not yet created hashtag columns (or found sentiment), reference the data cleaning page to learn more about what these columns are and get the steps to create them.
         Create a dataframe that groups by the sentiment and, for each hashtag, find the percent of tweets that are positive, negative, and neutral.
         We sort the values by negative %. 
-            ''', html.A('data cleaning page', href='/data-cleaning')),
+            '''), #[html.A('data cleaning page', href='/data-cleaning')]
                 
         dcc.Markdown(f'```python\n{c_toy_hashtag}\n```'),
 
@@ -106,6 +107,6 @@ layout = html.Div(children=[
         html.Br(),
         html.P('''
         Note: this tutorial is very similar to the one on creating a sentiment bar chart by actor.
-            ''', html.A('on creating a sentiment bar chart by actor', href='/actor_barchart_app.py')),
+            '''), #html.A('on creating a sentiment bar chart by actor', href='/actor_barchart_app.py')
         ]) 
 ])
