@@ -81,7 +81,8 @@ layout = html.Div(children=[
 
     html.P('''Some tweets come with a "geo id", which we saved in the column "geo" when scraping tweets. 
            We can use our API to convert these geo ids to actual location names (ex: '011add077f4d2da3' becomes 'Brooklyn, NY').
-           First, intialize the API. '''),
+           We also use geopy's geocoders to extract longitude/latitude values from the location names. (ex: 'Brooklyn, NY' becomes (40.6526006, -73.949721))
+           First, intialize the APIs. '''),
 
     dcc.Markdown(f'```python\n{c_intialize}\n```'),
 
@@ -104,7 +105,16 @@ layout = html.Div(children=[
 
     html.H5(children='Step 5: Sentiment Analysis'),
 
-    html.P('''text'''),
+    html.P('''It's also useful to find the sentiment of each tweet. We use NTLK's "VADER" (Valence Aware Dictionary and Sentiment Reasoner), which maps a lexicon
+    of words to positive, negative, and neutral valence scores. Read more at (LINK HERE). First, import the neccesary sentiment analysis tools you'll need.
+    '''),
+
+    dcc.Markdown(f'```python\n{c_senti_import}\n```'),
+
+    html.P('''Run this function to get the sentiment for every tweet. The compound score gives you a numeric sum of the valence scores and is normalized to range between
+    -1 and 1, with  -1 representing extremely negative sentiment and 1 representing extremely positive sentiment. In the sentiment column, we used threshold values for the compound scores
+    to determine if a text exhibits positive, negative, or neutral sentiment. The function returns the same dataframe with a new "compound_score" and "sentiment" column.
+    '''),
 
     dcc.Markdown(f'```python\n{c_sentiment}\n```'),
 
