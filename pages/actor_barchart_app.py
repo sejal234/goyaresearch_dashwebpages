@@ -76,7 +76,7 @@ layout = html.Div(children=[
         If you have not yet created actor columns (or found sentiment), reference the data cleaning page to learn more about what these columns are and get the steps to create them.
         Create a dataframe that groups by the sentiment and, for each actor, find the percent of tweets that are positive, negative, and neutral.
         We sort the values by negative %. 
-            ''', html.A('data cleaning page', href='/data-cleaning')),
+            '''), #, html.A('data cleaning page', href='/data-cleaning')
                 
         dcc.Markdown(f'```python\n{c_toy_actor}\n```'),
 
@@ -107,6 +107,6 @@ layout = html.Div(children=[
         html.Br(),
         html.P('''
         Note: this tutorial is very similar to the one on creating a sentiment bar chart by hashtag.
-            ''', html.A('on creating a sentiment bar chart by hashtag', href='/hashtag_barchart_app.py')),
+            '''), #, html.A('on creating a sentiment bar chart by hashtag', href='/hashtag_barchart_app.py')
         ])
     ])
