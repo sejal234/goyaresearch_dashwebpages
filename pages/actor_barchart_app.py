@@ -10,7 +10,11 @@ import numpy as np
 
 from actor_hashtag_instructions import *
 
-dash.register_page(__name__)
+dash.register_page(__name__,
+    path='/actor_barchart',
+    title='Plot: Actor Barchart',
+    name='Plot: Actor Barchart',
+    order = 4)
 
 # see https://plotly.com/python/px-arguments/ for more options
 #df = pd.read_csv('full_tweet_list.csv')
@@ -45,7 +49,7 @@ layout = html.Div(children=[
 
     html.Br(),
     html.Div(children='''update'''),
-    dcc.Graph(id='graph-content', figure = fig),
+    dcc.Graph(id='fig', figure = fig),
     html.Br(),
 
     html.Div([
@@ -64,7 +68,7 @@ layout = html.Div(children=[
         html.Br(),
 
         html.P(children='''
-            Then, declare your "app" variable NOTE TO SELF: PROBABLY EXPLAIN HOW THE WEBPAGE WORKS IN THE HOME PAGE? 
+            Then, declare your "app" variable to create your Dash web app.
             '''),
 
         dcc.Markdown(f'```python\n{c_app}\n```'),

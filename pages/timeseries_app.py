@@ -11,7 +11,11 @@ import json
 import re
 import flask
 
-dash.register_page(__name__)
+dash.register_page(__name__,
+    path='/timeseries',
+    title='Plot: Timeseries',
+    name='Plot: Timeseries',
+    order = 6)
 
 from timeseries_instructions import *
 
@@ -79,7 +83,7 @@ layout = html.Div([
             html.Br(),
 
             html.P(children='''
-                Then, declare your "app" variable NOTE TO SELF: PROBABLY EXPLAIN HOW THE WEBPAGE WORKS IN THE HOME PAGE? 
+               Then, declare your "app" variable to create your Dash web app.
                 '''),
 
             dcc.Markdown(f'```python\n{c_app}\n```'),
@@ -149,7 +153,7 @@ def display_time_series(ticker):
     fig = px.line(df_full, x='date', y=ticker)
 
     # the hover template is what displays when 
-    hover_template = """<b>Most Retweeted Tweet of %{x} (Of All Tweets):</b></br></br>"%{text}"</br>. There were %{y} original tweets tweeted on %{x}."""
+    hover_template = """<b>Most Retweeted Tweet of %{x} (Of All Tweets):</b></br></br>"%{text}"</br>. There were %{y} tweets on %{x} about this topic."""
     fig.update_traces(hovertemplate=hover_template, text=df_full['tweet'])
 
     fig.update_xaxes(

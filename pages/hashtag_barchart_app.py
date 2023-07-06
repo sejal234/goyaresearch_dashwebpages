@@ -6,7 +6,12 @@ import plotly.graph_objects as go
 from datetime import date
 import numpy as np
 
-dash.register_page(__name__)
+dash.register_page(__name__,
+    path='/hashtag_barchart',
+    title='Plot: Hashtag Barchart',
+    name='Plot: Hashtag Barchart',
+    order = 5)
+
 from actor_hashtag_instructions import *
 
 # see https://plotly.com/python/px-arguments/ for more options
@@ -45,7 +50,7 @@ layout = html.Div(children=[
     html.Br(),
 
     html.Div(children='''update'''),
-    dcc.Graph(id='graph-content', figure = fig),
+    dcc.Graph(id='fig', figure = fig),
     html.Br(),
 
     html.Div([
@@ -64,7 +69,7 @@ layout = html.Div(children=[
         html.Br(),
 
         html.P(children='''
-            Then, declare your "app" variable NOTE TO SELF: PROBABLY EXPLAIN HOW THE WEBPAGE WORKS IN THE HOME PAGE? 
+            Then, declare your "app" variable to create your Dash web app. 
             '''),
 
         dcc.Markdown(f'```python\n{c_app}\n```'),

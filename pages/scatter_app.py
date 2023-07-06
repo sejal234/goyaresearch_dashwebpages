@@ -9,7 +9,11 @@ import datetime
 import numpy as np
 from scatter_instructions import *
 
-dash.register_page(__name__)
+dash.register_page(__name__,
+    path='/scatter',
+    title='Plot: Scatter',
+    name='Plot: Scatter',
+    order = 7)
 
 #https://plotly.com/python/line-and-scatter/ 
 #df = pd.read_csv('full_tweet_list.csv')
@@ -90,7 +94,7 @@ layout = html.Div([
             html.Br(),
 
             html.P(children='''
-                Then, declare your "app" variable NOTE TO SELF: PROBABLY EXPLAIN HOW THE WEBPAGE WORKS IN THE HOME PAGE? 
+               Then, declare your "app" variable to create your Dash web app.
                 '''),
 
             dcc.Markdown(f'```python\n{c_app}\n```'),

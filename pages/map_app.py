@@ -8,12 +8,16 @@ from datetime import date
 import numpy as np
 from map_instructions import *
 
-from config import TOKEN
+#from config import TOKEN #i'm just going to put in the actual token
 
-dash.register_page(__name__)
+dash.register_page(__name__,
+    path='/map',
+    title='Plot: Map',
+    name='Plot: Map',
+    order = 8)
 
 #https://plotly.github.io/plotly.py-docs/generated/plotly.express.scatter_mapbox.html
-px.set_mapbox_access_token(TOKEN)
+px.set_mapbox_access_token( "pk.eyJ1Ijoic2VqYWwyMzQiLCJhIjoiY2xla2hiODI3MGFrYTN5cm40dWg5d2dyaiJ9.mwYlGueLwABEg82Ujm0PBQ")
 #df = pd.read_csv('full_tweet_list.csv')
 df = pd.read_csv('https://raw.githubusercontent.com/sejal234/goyaresearch_dashwebpages/main/full_tweet_list.csv')
 
@@ -53,7 +57,7 @@ layout = html.Div([
         html.Br(),
 
         html.P(children='''
-            Then, declare your "app" variable NOTE TO SELF: PROBABLY EXPLAIN HOW THE WEBPAGE WORKS IN THE HOME PAGE? 
+            Then, declare your "app" variable to create your Dash web app.
             '''),
 
         dcc.Markdown(f'```python\n{c_app}\n```'),

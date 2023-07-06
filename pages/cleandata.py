@@ -9,7 +9,11 @@ import flask
 # app = dash.Dash(__name__, server=server,external_stylesheets=external_stylesheets)
 
 from cleandata_instructions import *
-dash.register_page(__name__)
+dash.register_page(__name__,
+    path='/clean_twitter_data',
+    title='2: Clean Twitter Data',
+    name='2: Clean Twitter Data',
+    order = 3)
 
 #app.layout = html.Div(children=[
 layout = html.Div(children=[
