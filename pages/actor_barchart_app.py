@@ -88,15 +88,8 @@ layout = html.Div(children=[
 
         html.P('''
         Create a bar chart figure, where the actor is shown on the x-axis and two corresponding bars, 
-        the positive and negative percent (you can add "neu_percent" to the y), appear for each one.'''),
-                
-        dcc.Markdown(f'```python\n{c_actor_fig}\n```'),
-
-        html.Br(),
-
-        html.P('''
-        Create a bar chart figure, where the actor is shown on the x-axis and two corresponding bars, 
-        the positive and negative percent (you can add "neu_percent" to the y), appear for each one.'''),
+        the positive and negative percent (you can add "neu_percent" to the y), appear for each one. 
+        This could also work as a standalone figure outside of a dash app.  '''),
                 
         dcc.Markdown(f'```python\n{c_actor_fig}\n```'),
 

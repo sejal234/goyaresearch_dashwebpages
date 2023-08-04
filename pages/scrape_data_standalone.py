@@ -356,7 +356,7 @@ layout = html.Div([
 
     html.P('''
         To clean the data, we combined all the resulting dataframes into one large dataset, where we subsequentially removed duplicate tweets 
-        that arise when multiple keywords are mentioned in the same tweet. To clean the data, view [cleaning data tutorial](/cleandata). You can read in each file
+        that arise when multiple keywords are mentioned in the same tweet. To clean the data, view the the cleaning tutorial. You can read in each file
         individually, put all file names into a list, and use pd.concat to concatenate the dataframes.
     ''') ])
 
